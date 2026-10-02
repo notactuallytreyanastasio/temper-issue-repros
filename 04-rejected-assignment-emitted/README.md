@@ -61,9 +61,14 @@ py reading_label(500) = 'slow seconds'
 ## Expected
 
 Either no output from a failed build, or output in which the rejected
-assignment fails at run time with its diagnostic, as other rejected
-expressions do: `==` on class instances (case 01 here) reaches run time as
-a failure, if with the wrong message.
+assignment fails at run time with its diagnostic.
+
+Today rejected code generally does not fail at run time: a typed `let`, a
+wrongly typed `return` and a call with a wrongly typed argument are all
+emitted as written too, and the functional test
+`semantics/type-checked-locals` documents a static type error that does
+not stop execution as intended. Whether it should fail is a design
+question; draft #514 makes it fail and lists what changes.
 
 ## Why it matters
 

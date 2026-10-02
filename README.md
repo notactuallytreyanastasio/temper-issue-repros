@@ -8,9 +8,9 @@ directory per bug. Each was checked against
 | Directory | Issue | What happens |
 |---|---|---|
 | [01-class-equality](01-class-equality) | [#508](https://github.com/temperlang/temper/issues/508) | `==` or `when` on class instances: a diagnostic about `Int32`, then an internal compiler message at run time |
-| [02-loop-condition-crash](02-loop-condition-crash) | [#509](https://github.com/temperlang/temper/issues/509) | a loop whose condition fails while the compiler evaluates it crashes the compiler |
-| [03-for-of-at-compile-time](03-for-of-at-compile-time) | [#510](https://github.com/temperlang/temper/issues/510) | `for (let x of xs)` in a function the compiler evaluates fails the build |
-| [04-rejected-assignment-emitted](04-rejected-assignment-emitted) | [#511](https://github.com/temperlang/temper/issues/511) | a rejected assignment is emitted as written, and the failed build's output runs |
+| [02-loop-condition-crash](02-loop-condition-crash) | [#509](https://github.com/temperlang/temper/issues/509), fix [#512](https://github.com/temperlang/temper/pull/512) | a loop whose condition fails while the compiler evaluates it crashes the compiler |
+| [03-for-of-at-compile-time](03-for-of-at-compile-time) | [#510](https://github.com/temperlang/temper/issues/510), fix [#513](https://github.com/temperlang/temper/pull/513) | `for (let x of xs)` in a function the compiler evaluates fails the build |
+| [04-rejected-assignment-emitted](04-rejected-assignment-emitted) | [#511](https://github.com/temperlang/temper/issues/511), draft [#514](https://github.com/temperlang/temper/pull/514) | a rejected assignment is emitted as written, and the failed build's output runs |
 
 ## Running a case
 

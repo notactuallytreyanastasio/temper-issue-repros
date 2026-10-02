@@ -47,10 +47,12 @@ console.log("total=${total([1, 2, 3])}");
 A loop with no early exit is enough to trigger it. Adding a `return` or a
 `break` to the body gives the same error, at stage `@T` in place of `@D`.
 
-A user-defined higher-order function whose block lambda assigns an outer
-variable evaluates without error, and so does an indexed
-`for (var i = 0; i < xs.length; ++i)` loop. That points at the builtin
-`forEach` that `for … of` uses.
+An indexed `for (var i = 0; i < xs.length; ++i)` loop evaluates without
+error. The `own-each` case builds only because nothing folds its call: its
+generated code still calls `total` at run time. Any block lambda that
+closes over a local fails once a call to its function is folded, and
+`xs.filter { (x): Boolean => t += x; true }` fails the same way. #513 has
+the cause and a fix.
 
 A Temper built from `0a0f24a8` fails the same way.
 
