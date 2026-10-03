@@ -1,6 +1,6 @@
 # Temper issue reproductions
 
-Small Temper libraries that reproduce four bugs in the Temper compiler, one
+Small Temper libraries that reproduce five bugs in the Temper compiler, one
 directory per bug. Each was checked against
 [temperlang/temper](https://github.com/temperlang/temper) at `e9ff0d25`
 (main on 2026-10-02) with the js and py backends, and each shows on both.
@@ -11,6 +11,7 @@ directory per bug. Each was checked against
 | [02-loop-condition-crash](02-loop-condition-crash) | [#509](https://github.com/temperlang/temper/issues/509), fix [#512](https://github.com/temperlang/temper/pull/512) | a loop whose condition fails while the compiler evaluates it crashes the compiler |
 | [03-for-of-at-compile-time](03-for-of-at-compile-time) | [#510](https://github.com/temperlang/temper/issues/510), fix [#513](https://github.com/temperlang/temper/pull/513) | `for (let x of xs)` in a function the compiler evaluates fails the build |
 | [04-rejected-assignment-emitted](04-rejected-assignment-emitted) | [#511](https://github.com/temperlang/temper/issues/511), draft [#514](https://github.com/temperlang/temper/pull/514) | a rejected assignment is emitted as written, and the failed build's output runs |
+| [05-async-blocks-race](05-async-blocks-race) | (filing) | `async` blocks run in parallel on py and java and lose updates to shared state |
 
 ## Running a case
 
