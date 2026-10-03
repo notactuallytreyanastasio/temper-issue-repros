@@ -21,6 +21,7 @@ directory per bug. Each was checked against
 | [12-rust-std-name-collisions](12-rust-std-name-collisions) | [#523](https://github.com/temperlang/temper/issues/523) | rust: classes named `Box`, `Option`, `Some`, `None`, `Ok` or `Err` break the output |
 | [13-java-exit-abandons-async-work](13-java-exit-abandons-async-work) | [#524](https://github.com/temperlang/temper/issues/524) | java: `main` exits 0 after 10 seconds while an async block still runs |
 | [14-java-four-part-jdk-version](14-java-four-part-jdk-version) | [#525](https://github.com/temperlang/temper/issues/525) | `temper run -b java` rejects a JDK version like `21.0.12.1` |
+| [15-let-maybe-uninitialized](15-let-maybe-uninitialized) | [#528](https://github.com/temperlang/temper/issues/528) | a `let` assigned a constant on one branch builds and reads as that constant |
 
 ## Running a case
 
