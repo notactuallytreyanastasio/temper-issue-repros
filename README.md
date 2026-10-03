@@ -22,6 +22,8 @@ directory per bug. Each was checked against
 | [13-java-exit-abandons-async-work](13-java-exit-abandons-async-work) | [#524](https://github.com/temperlang/temper/issues/524) | java: `main` exits 0 after 10 seconds while an async block still runs |
 | [14-java-four-part-jdk-version](14-java-four-part-jdk-version) | [#525](https://github.com/temperlang/temper/issues/525) | `temper run -b java` rejects a JDK version like `21.0.12.1` |
 | [15-let-maybe-uninitialized](15-let-maybe-uninitialized) | [#528](https://github.com/temperlang/temper/issues/528) | a `let` assigned a constant on one branch builds and reads as that constant |
+| [16-java-recursive-local-reads-field](16-java-recursive-local-reads-field) | [#535](https://github.com/temperlang/temper/issues/535) | java: a recursive local function that reads a field compiles to code javac rejects |
+| [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
 
 ## Running a case
 
