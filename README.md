@@ -3,7 +3,7 @@
 Small Temper libraries that reproduce bugs in the Temper compiler, one
 directory per bug. Each was checked against
 [temperlang/temper](https://github.com/temperlang/temper) at `e9ff0d25`
-(main on 2026-10-02) with the js and py backends, and each shows on both.
+(main on 2026-10-02); each case's README says which backends it ran on.
 
 | Directory | Issue | What happens |
 |---|---|---|
