@@ -3,3 +3,4 @@ temper.keep/
 *.log
 java-classes/
 java-sources.txt
+javac.txt
