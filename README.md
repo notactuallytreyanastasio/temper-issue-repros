@@ -1,6 +1,6 @@
 # Temper issue reproductions
 
-Small Temper libraries that reproduce five bugs in the Temper compiler, one
+Small Temper libraries that reproduce bugs in the Temper compiler, one
 directory per bug. Each was checked against
 [temperlang/temper](https://github.com/temperlang/temper) at `e9ff0d25`
 (main on 2026-10-02) with the js and py backends, and each shows on both.
@@ -12,6 +12,13 @@ directory per bug. Each was checked against
 | [03-for-of-at-compile-time](03-for-of-at-compile-time) | [#510](https://github.com/temperlang/temper/issues/510), fix [#513](https://github.com/temperlang/temper/pull/513) | `for (let x of xs)` in a function the compiler evaluates fails the build |
 | [04-rejected-assignment-emitted](04-rejected-assignment-emitted) | [#511](https://github.com/temperlang/temper/issues/511), draft [#514](https://github.com/temperlang/temper/pull/514) | a rejected assignment is emitted as written, and the failed build's output runs |
 | [05-async-blocks-race](05-async-blocks-race) | [#516](https://github.com/temperlang/temper/issues/516) | `async` blocks run in parallel on py and java and lose updates to shared state |
+| [06-rust-lock-held-across-call](06-rust-lock-held-across-call) | [#517](https://github.com/temperlang/temper/issues/517) | rust: a method call on a field holds the read lock; a write back deadlocks |
+| [07-promise-second-waiter-dropped](07-promise-second-waiter-dropped) | [#518](https://github.com/temperlang/temper/issues/518) | rust: a promise resumes only the last block that awaits it |
+| [08-promise-complete-resumes-inline](08-promise-complete-resumes-inline) | [#519](https://github.com/temperlang/temper/issues/519) | `complete()` runs the waiter before it returns on rust, py and java |
+| [09-cpp-continuation-never-resumes](09-cpp-continuation-never-resumes) | [#520](https://github.com/temperlang/temper/issues/520) | cpp: a block never resumes when top-level code completes its promise |
+| [10-await-outside-async](10-await-outside-async) | [#521](https://github.com/temperlang/temper/issues/521) | `await` outside an async block passes the frontend, then each backend fails |
+| [11-rust-closure-in-top-level-block](11-rust-closure-in-top-level-block) | [#522](https://github.com/temperlang/temper/issues/522) | rust: a function inside a top-level `if` or `while` cannot read a top-level variable |
+| [12-rust-std-name-collisions](12-rust-std-name-collisions) | [#523](https://github.com/temperlang/temper/issues/523) | rust: classes named `Box`, `Option`, `Some`, `None`, `Ok` or `Err` break the output |
 
 ## Running a case
 
