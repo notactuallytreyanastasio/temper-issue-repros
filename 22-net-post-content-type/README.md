@@ -81,6 +81,8 @@ python3 22-net-post-content-type/echo_server.py &
 
 ## Fix
 
+[#544](https://github.com/temperlang/temper/pull/544), which also makes `types/netresponse` check the Content-Type.
+
 ```diff
 -        this.bodyMimeType = bodyMimeType;
 +        this.bodyMimeType = mimeType;

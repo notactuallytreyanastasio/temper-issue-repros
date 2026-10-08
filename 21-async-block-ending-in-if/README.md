@@ -106,8 +106,7 @@ isolated.
 The comment on that line says "Just `void` out returns". Replacing the
 assignment with a `void` value leaf, as `maybeAdjustVars` already does for
 hoisted declarations, fixes all three libraries here. With that change (a
-local build of ffba652a plus the patch; branch `fix/coroutine-tail-if`, not
-yet a PR), java and rust print `pos`, `pos` and `pos 3` with no diagnostic,
+local build of ffba652a plus the patch; [#543](https://github.com/temperlang/temper/pull/543)), java and rust print `pos`, `pos` and `pos 3` with no diagnostic,
 and cpp builds all three and prints `pos 3` for `in-a-function`. cpp prints
 nothing for the two top-level ones, which is #520. A new stage test,
 `CoroutineConverterTest.awaitOrelseThenIf`, fails before the change and

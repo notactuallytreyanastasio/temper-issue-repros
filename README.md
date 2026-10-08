@@ -26,10 +26,10 @@ directory per bug. Cases 01 to 18 were checked against
 | [16-java-recursive-local-reads-field](16-java-recursive-local-reads-field) | [#535](https://github.com/temperlang/temper/issues/535) | java: a recursive local function that reads a field compiles to code javac rejects |
 | [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
 | [18-cpp-argument-order](18-cpp-argument-order) | [#539](https://github.com/temperlang/temper/issues/539) | cpp: call arguments run right to left under x86-64 g++ |
-| [19-top-level-assignments-reordered](19-top-level-assignments-reordered) | pending | top-level assignments to a `var` run before the statements written above them |
-| [20-regex-counted-repetition](20-regex-counted-repetition) | pending | `/[0-9]{3}/` matches the text `{3}`, not three digits |
-| [21-async-block-ending-in-if](21-async-block-ending-in-if) | pending | an async block ending in an `if` after an `await` breaks on java, rust and cpp |
-| [22-net-post-content-type](22-net-post-content-type) | pending | std/net `post()` ignores its mime type, so each backend sends its own default |
+| [19-top-level-assignments-reordered](19-top-level-assignments-reordered) | [#540](https://github.com/temperlang/temper/issues/540) | top-level assignments to a `var` run before the statements written above them |
+| [20-regex-counted-repetition](20-regex-counted-repetition) | [#541](https://github.com/temperlang/temper/issues/541) | `/[0-9]{3}/` matches the text `{3}`, not three digits |
+| [21-async-block-ending-in-if](21-async-block-ending-in-if) | [#542](https://github.com/temperlang/temper/issues/542), fix [#543](https://github.com/temperlang/temper/pull/543) | an async block ending in an `if` after an `await` breaks on java, rust and cpp |
+| [22-net-post-content-type](22-net-post-content-type) | fix [#544](https://github.com/temperlang/temper/pull/544) | std/net `post()` ignores its mime type, so each backend sends its own default |
 
 ## Running a case
 
