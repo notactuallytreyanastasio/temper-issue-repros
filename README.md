@@ -61,8 +61,8 @@ directory per bug. Cases 01 to 18 were checked against
 | [51-void-bubble-loses-field-write](51-void-bubble-loses-field-write) | [#536](https://github.com/temperlang/temper/issues/536), [comment](https://github.com/temperlang/temper/issues/536#issuecomment-6064953116) | on js the dangling `return__N` loses a field write (comment) |
 | [52-py-loop-let-capture](52-py-loop-let-capture) | [#264](https://github.com/temperlang/temper/issues/264), [comment](https://github.com/temperlang/temper/issues/264#issuecomment-6064954787) | py late-binds a `let` in a loop and a `for of` variable (comment) |
 | [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), [comment](https://github.com/temperlang/temper/issues/505#issuecomment-6064956391), fix [#575](https://github.com/temperlang/temper/pull/575) | the cause of one "Test failed" line per run (comment) |
-| [54-generator-continue-loses-target](54-generator-continue-loses-target) | | a `continue` or `break` in a generator's loop loses its target on java, rust and cpp |
-| [55-generator-done-and-value-result](55-generator-done-and-value-result) | | a generator's `done`, `is ValueResult`, and py's `nextSafe()` at the end break on most backends |
+| [54-generator-continue-loses-target](54-generator-continue-loses-target) | [#578](https://github.com/temperlang/temper/issues/578), fix [#580](https://github.com/temperlang/temper/pull/580) | a `continue` or `break` in a generator's loop loses its target on java, rust and cpp |
+| [55-generator-done-and-value-result](55-generator-done-and-value-result) | [#579](https://github.com/temperlang/temper/issues/579) | a generator's `done`, `is ValueResult`, and py's `nextSafe()` at the end break on most backends |
 
 ## Running a case
 
