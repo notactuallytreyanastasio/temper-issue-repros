@@ -1,9 +1,10 @@
 # Temper issue reproductions
 
 Small Temper libraries that reproduce bugs in the Temper compiler, one
-directory per bug. Each was checked against
+directory per bug. Cases 01 to 18 were checked against
 [temperlang/temper](https://github.com/temperlang/temper) at `e9ff0d25`
-(main on 2026-10-02); each case's README says which backends it ran on.
+(main on 2026-10-02), and cases 19 on against `ffba652a` (main on
+2026-10-08); each case's README says which backends it ran on.
 
 | Directory | Issue | What happens |
 |---|---|---|
@@ -25,6 +26,10 @@ directory per bug. Each was checked against
 | [16-java-recursive-local-reads-field](16-java-recursive-local-reads-field) | [#535](https://github.com/temperlang/temper/issues/535) | java: a recursive local function that reads a field compiles to code javac rejects |
 | [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
 | [18-cpp-argument-order](18-cpp-argument-order) | [#539](https://github.com/temperlang/temper/issues/539) | cpp: call arguments run right to left under x86-64 g++ |
+| [19-top-level-assignments-reordered](19-top-level-assignments-reordered) | pending | top-level assignments to a `var` run before the statements written above them |
+| [20-regex-counted-repetition](20-regex-counted-repetition) | pending | `/[0-9]{3}/` matches the text `{3}`, not three digits |
+| [21-async-block-ending-in-if](21-async-block-ending-in-if) | pending | an async block ending in an `if` after an `await` breaks on java, rust and cpp |
+| [22-net-post-content-type](22-net-post-content-type) | pending | std/net `post()` ignores its mime type, so each backend sends its own default |
 
 ## Running a case
 
