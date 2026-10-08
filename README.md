@@ -22,16 +22,16 @@ directory per bug. Cases 01 to 18 were checked against
 | [12-rust-std-name-collisions](12-rust-std-name-collisions) | [#523](https://github.com/temperlang/temper/issues/523) | rust: classes named `Box`, `Option`, `Some`, `None`, `Ok` or `Err` break the output |
 | [13-java-exit-abandons-async-work](13-java-exit-abandons-async-work) | [#524](https://github.com/temperlang/temper/issues/524) | java: `main` exits 0 after 10 seconds while an async block still runs |
 | [14-java-four-part-jdk-version](14-java-four-part-jdk-version) | [#525](https://github.com/temperlang/temper/issues/525) | `temper run -b java` rejects a JDK version like `21.0.12.1` |
-| [15-let-maybe-uninitialized](15-let-maybe-uninitialized) | [#528](https://github.com/temperlang/temper/issues/528) | a `let` assigned a constant on one branch builds and reads as that constant |
+| [15-let-maybe-uninitialized](15-let-maybe-uninitialized) | [#528](https://github.com/temperlang/temper/issues/528), fix [#574](https://github.com/temperlang/temper/pull/574) | a `let` assigned a constant on one branch builds and reads as that constant |
 | [16-java-recursive-local-reads-field](16-java-recursive-local-reads-field) | [#535](https://github.com/temperlang/temper/issues/535) | java: a recursive local function that reads a field compiles to code javac rejects |
-| [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
+| [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536), fix [#572](https://github.com/temperlang/temper/pull/572) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
 | [18-cpp-argument-order](18-cpp-argument-order) | [#539](https://github.com/temperlang/temper/issues/539) | cpp: call arguments run right to left under x86-64 g++ |
-| [19-top-level-assignments-reordered](19-top-level-assignments-reordered) | [#540](https://github.com/temperlang/temper/issues/540) | top-level assignments to a `var` run before the statements written above them |
-| [20-regex-counted-repetition](20-regex-counted-repetition) | [#541](https://github.com/temperlang/temper/issues/541) | `/[0-9]{3}/` matches the text `{3}`, not three digits |
+| [19-top-level-assignments-reordered](19-top-level-assignments-reordered) | [#540](https://github.com/temperlang/temper/issues/540), fix [#571](https://github.com/temperlang/temper/pull/571) | top-level assignments to a `var` run before the statements written above them |
+| [20-regex-counted-repetition](20-regex-counted-repetition) | [#541](https://github.com/temperlang/temper/issues/541), fix [#573](https://github.com/temperlang/temper/pull/573) | `/[0-9]{3}/` matches the text `{3}`, not three digits |
 | [21-async-block-ending-in-if](21-async-block-ending-in-if) | [#542](https://github.com/temperlang/temper/issues/542), fix [#543](https://github.com/temperlang/temper/pull/543) | an async block ending in an `if` after an `await` breaks on java, rust and cpp |
 | [22-net-post-content-type](22-net-post-content-type) | fix [#544](https://github.com/temperlang/temper/pull/544) | std/net `post()` ignores its mime type, so each backend sends its own default |
-| [23-static-var-assignment](23-static-var-assignment) | [#545](https://github.com/temperlang/temper/issues/545) | `C.n = ...` on a `static var` writes to a string on js and crashes the compiler in a static method |
-| [24-static-getter-crash](24-static-getter-crash) | [#546](https://github.com/temperlang/temper/issues/546) | `static get` or `static set` crashes the compiler |
+| [23-static-var-assignment](23-static-var-assignment) | [#545](https://github.com/temperlang/temper/issues/545), fix [#577](https://github.com/temperlang/temper/pull/577) | `C.n = ...` on a `static var` writes to a string on js and crashes the compiler in a static method |
+| [24-static-getter-crash](24-static-getter-crash) | [#546](https://github.com/temperlang/temper/issues/546), fix [#576](https://github.com/temperlang/temper/pull/576) | `static get` or `static set` crashes the compiler |
 | [25-coalesce-empty-list-any-value](25-coalesce-empty-list-any-value) | [#547](https://github.com/temperlang/temper/issues/547) | `items ?? []` is typed `List<AnyValue>`; java, rust and cpp output does not compile |
 | [26-list-of-subtype-as-list-of-supertype](26-list-of-subtype-as-list-of-supertype) | [#548](https://github.com/temperlang/temper/issues/548) | `List<Square>` where `List<Shape>` is expected fails on java and rust, or cpp |
 | [27-async-list-local-across-await](27-async-list-local-across-await) | [#549](https://github.com/temperlang/temper/issues/549) | a `List` local kept across an `await` crashes the java, rust and cpp translators |
@@ -60,7 +60,7 @@ directory per bug. Cases 01 to 18 were checked against
 | [50-constant-closure-not-expanded](50-constant-closure-not-expanded) | [#510](https://github.com/temperlang/temper/issues/510), [comment](https://github.com/temperlang/temper/issues/510#issuecomment-6064951652) | two more shapes that #513 fixes (comment) |
 | [51-void-bubble-loses-field-write](51-void-bubble-loses-field-write) | [#536](https://github.com/temperlang/temper/issues/536), [comment](https://github.com/temperlang/temper/issues/536#issuecomment-6064953116) | on js the dangling `return__N` loses a field write (comment) |
 | [52-py-loop-let-capture](52-py-loop-let-capture) | [#264](https://github.com/temperlang/temper/issues/264), [comment](https://github.com/temperlang/temper/issues/264#issuecomment-6064954787) | py late-binds a `let` in a loop and a `for of` variable (comment) |
-| [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), [comment](https://github.com/temperlang/temper/issues/505#issuecomment-6064956391) | the cause of one "Test failed" line per run (comment) |
+| [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), [comment](https://github.com/temperlang/temper/issues/505#issuecomment-6064956391), fix [#575](https://github.com/temperlang/temper/pull/575) | the cause of one "Test failed" line per run (comment) |
 
 ## Running a case
 
