@@ -24,6 +24,7 @@ directory per bug. Each was checked against
 | [15-let-maybe-uninitialized](15-let-maybe-uninitialized) | [#528](https://github.com/temperlang/temper/issues/528) | a `let` assigned a constant on one branch builds and reads as that constant |
 | [16-java-recursive-local-reads-field](16-java-recursive-local-reads-field) | [#535](https://github.com/temperlang/temper/issues/535) | java: a recursive local function that reads a field compiles to code javac rejects |
 | [17-void-function-ending-in-panic](17-void-function-ending-in-panic) | [#536](https://github.com/temperlang/temper/issues/536) | a `Void` function ending in `panic()` or `bubble()` fails to build on js and rust |
+| [18-cpp-argument-order](18-cpp-argument-order) | [#539](https://github.com/temperlang/temper/issues/539) | cpp: call arguments run right to left under x86-64 g++ |
 
 ## Running a case
 
