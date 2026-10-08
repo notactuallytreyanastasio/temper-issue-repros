@@ -30,37 +30,37 @@ directory per bug. Cases 01 to 18 were checked against
 | [20-regex-counted-repetition](20-regex-counted-repetition) | [#541](https://github.com/temperlang/temper/issues/541) | `/[0-9]{3}/` matches the text `{3}`, not three digits |
 | [21-async-block-ending-in-if](21-async-block-ending-in-if) | [#542](https://github.com/temperlang/temper/issues/542), fix [#543](https://github.com/temperlang/temper/pull/543) | an async block ending in an `if` after an `await` breaks on java, rust and cpp |
 | [22-net-post-content-type](22-net-post-content-type) | fix [#544](https://github.com/temperlang/temper/pull/544) | std/net `post()` ignores its mime type, so each backend sends its own default |
-| [23-static-var-assignment](23-static-var-assignment) | pending | `C.n = ...` on a `static var` writes to a string on js and crashes the compiler in a static method |
-| [24-static-getter-crash](24-static-getter-crash) | pending | `static get` or `static set` crashes the compiler |
-| [25-coalesce-empty-list-any-value](25-coalesce-empty-list-any-value) | pending | `items ?? []` is typed `List<AnyValue>`; java, rust and cpp output does not compile |
-| [26-list-of-subtype-as-list-of-supertype](26-list-of-subtype-as-list-of-supertype) | pending | `List<Square>` where `List<Shape>` is expected fails on java and rust, or cpp |
-| [27-async-list-local-across-await](27-async-list-local-across-await) | pending | a `List` local kept across an `await` crashes the java, rust and cpp translators |
-| [28-py-async-block-ending-in-if](28-py-async-block-ending-in-if) | pending | py: an async block ending in an `if` with no `else` fails to load (`nonlocal`) |
-| [29-js-broken-promise-orelse](29-js-broken-promise-orelse) | pending | js: a promise broken before its block awaits it kills node despite `orelse` |
-| [30-interp-await-in-loop](30-interp-await-in-loop) | pending | interpreter: an `await` inside a loop body always takes `orelse` |
-| [31-net-404-per-backend](31-net-404-per-backend) | pending | std/net: a 404 is a status on js and java, a broken promise on rust, a hang on py |
-| [32-float64-tostring-per-backend](32-float64-tostring-per-backend) | pending | `Float64.toString` differs per backend; some lua and interpreter strings do not read back |
-| [33-float64-rounding-differs](33-float64-rounding-differs) | pending | `floor`, `ceil` and `round` differ per backend |
-| [34-number-parse-not-json](34-number-parse-not-json) | pending | number parsing accepts non-JSON input, and backends disagree on which |
-| [35-cpp-tofloat64-subnormal](35-cpp-tofloat64-subnormal) | pending | cpp: `toFloat64` bubbles on subnormal and out-of-range input |
-| [36-py-tostring-radix-36](36-py-tostring-radix-36) | pending | py: `toString(36)` raises for every value |
-| [37-py-nonlocal-function-var](37-py-nonlocal-function-var) | pending | py: a reassigned function-holding local `var` breaks the import |
-| [38-py-self-bounded-type-param](38-py-self-bounded-type-param) | pending | py: `<T extends Ord<T>>` raises NameError on import |
-| [39-java-throwing-fn-type-result](39-java-throwing-fn-type-result) | pending | java: a `throws Bubble` function type becomes `Function<String, Result>` |
-| [40-java-float64-list-map-to-object](40-java-float64-list-map-to-object) | pending | java: `List<Float64>.map` to an object type does not compile |
-| [41-rust-failed-cast-in-nullable-return](41-rust-failed-cast-in-nullable-return) | pending | rust: `v as T` in a `T? throws Bubble` function does not compile |
-| [42-rust-int64-literal-cast](42-rust-int64-literal-cast) | pending | rust: an `Int64` literal outside the `i32` range is emitted without `i64` |
-| [43-cpp-method-named-keyword](43-cpp-method-named-keyword) | pending | cpp: calling a method named after a C++ keyword crashes the translator |
-| [44-cpp-std-regex-not-initialized](44-cpp-std-regex-not-initialized) | pending | cpp: importing only classes from std/regex skips its init; a `Regex` segfaults |
-| [45-lua-long-list-literal](45-lua-long-list-literal) | pending | lua: a 250-element list literal does not load |
-| [46-rust-test-hides-cargo-errors](46-rust-test-hides-cargo-errors) | pending | `temper test -b rust` says "0 of N" and exits 0 when the crate does not compile |
-| [47-java-test-stale-surefire-report](47-java-test-stale-surefire-report) | pending | `temper test -b java` reports the previous run when javac fails |
-| [48-missing-tool-npe](48-missing-tool-npe) | pending | a missing `lua` or `cargo` gives a NullPointerException |
-| [49-float-division-by-zero](49-float-division-by-zero) | [#373](https://github.com/temperlang/temper/issues/373), comment pending | Float64 division by zero: which backends bubble (comment) |
-| [50-constant-closure-not-expanded](50-constant-closure-not-expanded) | [#510](https://github.com/temperlang/temper/issues/510), comment pending | two more shapes that #513 fixes (comment) |
-| [51-void-bubble-loses-field-write](51-void-bubble-loses-field-write) | [#536](https://github.com/temperlang/temper/issues/536), comment pending | on js the dangling `return__N` loses a field write (comment) |
-| [52-py-loop-let-capture](52-py-loop-let-capture) | [#264](https://github.com/temperlang/temper/issues/264), comment pending | py late-binds a `let` in a loop and a `for of` variable (comment) |
-| [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), comment pending | the cause of one "Test failed" line per run (comment) |
+| [23-static-var-assignment](23-static-var-assignment) | [#545](https://github.com/temperlang/temper/issues/545) | `C.n = ...` on a `static var` writes to a string on js and crashes the compiler in a static method |
+| [24-static-getter-crash](24-static-getter-crash) | [#546](https://github.com/temperlang/temper/issues/546) | `static get` or `static set` crashes the compiler |
+| [25-coalesce-empty-list-any-value](25-coalesce-empty-list-any-value) | [#547](https://github.com/temperlang/temper/issues/547) | `items ?? []` is typed `List<AnyValue>`; java, rust and cpp output does not compile |
+| [26-list-of-subtype-as-list-of-supertype](26-list-of-subtype-as-list-of-supertype) | [#548](https://github.com/temperlang/temper/issues/548) | `List<Square>` where `List<Shape>` is expected fails on java and rust, or cpp |
+| [27-async-list-local-across-await](27-async-list-local-across-await) | [#549](https://github.com/temperlang/temper/issues/549) | a `List` local kept across an `await` crashes the java, rust and cpp translators |
+| [28-py-async-block-ending-in-if](28-py-async-block-ending-in-if) | [#550](https://github.com/temperlang/temper/issues/550) | py: an async block ending in an `if` with no `else` fails to load (`nonlocal`) |
+| [29-js-broken-promise-orelse](29-js-broken-promise-orelse) | [#551](https://github.com/temperlang/temper/issues/551) | js: a promise broken before its block awaits it kills node despite `orelse` |
+| [30-interp-await-in-loop](30-interp-await-in-loop) | [#552](https://github.com/temperlang/temper/issues/552) | interpreter: an `await` inside a loop body always takes `orelse` |
+| [31-net-404-per-backend](31-net-404-per-backend) | [#553](https://github.com/temperlang/temper/issues/553) | std/net: a 404 is a status on js and java, a broken promise on rust, a hang on py |
+| [32-float64-tostring-per-backend](32-float64-tostring-per-backend) | [#554](https://github.com/temperlang/temper/issues/554) | `Float64.toString` differs per backend; some lua and interpreter strings do not read back |
+| [33-float64-rounding-differs](33-float64-rounding-differs) | [#555](https://github.com/temperlang/temper/issues/555) | `floor`, `ceil` and `round` differ per backend |
+| [34-number-parse-not-json](34-number-parse-not-json) | [#556](https://github.com/temperlang/temper/issues/556) | number parsing accepts non-JSON input, and backends disagree on which |
+| [35-cpp-tofloat64-subnormal](35-cpp-tofloat64-subnormal) | [#557](https://github.com/temperlang/temper/issues/557) | cpp: `toFloat64` bubbles on subnormal and out-of-range input |
+| [36-py-tostring-radix-36](36-py-tostring-radix-36) | [#558](https://github.com/temperlang/temper/issues/558) | py: `toString(36)` raises for every value |
+| [37-py-nonlocal-function-var](37-py-nonlocal-function-var) | [#559](https://github.com/temperlang/temper/issues/559) | py: a reassigned function-holding local `var` breaks the import |
+| [38-py-self-bounded-type-param](38-py-self-bounded-type-param) | [#560](https://github.com/temperlang/temper/issues/560) | py: `<T extends Ord<T>>` raises NameError on import |
+| [39-java-throwing-fn-type-result](39-java-throwing-fn-type-result) | [#561](https://github.com/temperlang/temper/issues/561) | java: a `throws Bubble` function type becomes `Function<String, Result>` |
+| [40-java-float64-list-map-to-object](40-java-float64-list-map-to-object) | [#562](https://github.com/temperlang/temper/issues/562) | java: `List<Float64>.map` to an object type does not compile |
+| [41-rust-failed-cast-in-nullable-return](41-rust-failed-cast-in-nullable-return) | [#563](https://github.com/temperlang/temper/issues/563) | rust: `v as T` in a `T? throws Bubble` function does not compile |
+| [42-rust-int64-literal-cast](42-rust-int64-literal-cast) | [#564](https://github.com/temperlang/temper/issues/564) | rust: an `Int64` literal outside the `i32` range is emitted without `i64` |
+| [43-cpp-method-named-keyword](43-cpp-method-named-keyword) | [#565](https://github.com/temperlang/temper/issues/565) | cpp: calling a method named after a C++ keyword crashes the translator |
+| [44-cpp-std-regex-not-initialized](44-cpp-std-regex-not-initialized) | [#566](https://github.com/temperlang/temper/issues/566) | cpp: importing only classes from std/regex skips its init; a `Regex` segfaults |
+| [45-lua-long-list-literal](45-lua-long-list-literal) | [#567](https://github.com/temperlang/temper/issues/567) | lua: a 250-element list literal does not load |
+| [46-rust-test-hides-cargo-errors](46-rust-test-hides-cargo-errors) | [#568](https://github.com/temperlang/temper/issues/568) | `temper test -b rust` says "0 of N" and exits 0 when the crate does not compile |
+| [47-java-test-stale-surefire-report](47-java-test-stale-surefire-report) | [#569](https://github.com/temperlang/temper/issues/569) | `temper test -b java` reports the previous run when javac fails |
+| [48-missing-tool-npe](48-missing-tool-npe) | [#570](https://github.com/temperlang/temper/issues/570) | a missing `lua` or `cargo` gives a NullPointerException |
+| [49-float-division-by-zero](49-float-division-by-zero) | [#373](https://github.com/temperlang/temper/issues/373), [comment](https://github.com/temperlang/temper/issues/373#issuecomment-6064950141) | Float64 division by zero: which backends bubble (comment) |
+| [50-constant-closure-not-expanded](50-constant-closure-not-expanded) | [#510](https://github.com/temperlang/temper/issues/510), [comment](https://github.com/temperlang/temper/issues/510#issuecomment-6064951652) | two more shapes that #513 fixes (comment) |
+| [51-void-bubble-loses-field-write](51-void-bubble-loses-field-write) | [#536](https://github.com/temperlang/temper/issues/536), [comment](https://github.com/temperlang/temper/issues/536#issuecomment-6064953116) | on js the dangling `return__N` loses a field write (comment) |
+| [52-py-loop-let-capture](52-py-loop-let-capture) | [#264](https://github.com/temperlang/temper/issues/264), [comment](https://github.com/temperlang/temper/issues/264#issuecomment-6064954787) | py late-binds a `let` in a loop and a `for of` variable (comment) |
+| [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), [comment](https://github.com/temperlang/temper/issues/505#issuecomment-6064956391) | the cause of one "Test failed" line per run (comment) |
 
 ## Running a case
 

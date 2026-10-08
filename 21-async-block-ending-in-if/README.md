@@ -67,7 +67,8 @@ The three libraries here:
 | [`if-after-await`](if-after-await/src/main.temper.md) | `if (v > 0) { ... }`, no `else` | `pos` | SyntaxError (see below) | `pos` | `pos`, Run failed | `pos`, panic |
 | [`in-a-function`](in-a-function/src/main.temper.md) | the `async` block inside a function, the promise completed inside the block | `pos 3` | `pos 3` | `pos 3` | `pos 3`, Run failed | `pos 3`, panic |
 
-The py failure on `if-after-await` is a different bug, not filed yet: py
+The py failure on `if-after-await` is a different bug,
+[#550](https://github.com/temperlang/temper/issues/550): py
 fails to load any async block that ends in an `if` with no `else`, whether
 or not it awaits, with `SyntaxError: no binding for nonlocal`.
 
