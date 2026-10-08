@@ -1,9 +1,9 @@
 # `==` and `when` on class instances report an `Int32` signature, then fail at run time with an internal message
 
 Since [#494](https://github.com/temperlang/temper/pull/494), the frontend
-rejects `==` between two instances of a user class, and `when` over them;
-`core.temper` says user types cannot extend `Equatable` yet. Two things go
-wrong around that rejection.
+rejects `==` between two instances of a user class, and `when` over them,
+unless the class defines `==` with a method marked `@operator("==")`. Two
+things go wrong when it does not.
 
 The diagnostic describes a different operation. It reports the `Int32`
 overload of `==` instead of saying that `Space` has no `==`:
@@ -61,6 +61,21 @@ run-time failures.
 A diagnostic that names the problem, along the lines of "`Space` does not
 support `==`", and, if the build still emits code, a run-time failure that
 carries that diagnostic rather than the translator's own message.
+
+## Workaround
+
+Give the class an `==` method. With this added to `Space`, the `when` case
+passes on js and py, and `describe(new Space("a"))` returns `"first"`, so
+`when` compares with the method and not by identity:
+
+```temper
+@operator("==")
+public eq(other: Space): Boolean { name == other.name }
+```
+
+`@operator("<=>")` does the same for `<`, `<=`, `>`, `>=` and `<=>`.
+[#515](https://github.com/temperlang/temper/pull/515) puts this hint in the
+diagnostic.
 
 ## Notes
 
