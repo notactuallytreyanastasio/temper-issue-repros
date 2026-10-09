@@ -63,10 +63,10 @@ directory per bug. Cases 01 to 18 were checked against
 | [53-test-failed-shown-once](53-test-failed-shown-once) | [#505](https://github.com/temperlang/temper/issues/505), [comment](https://github.com/temperlang/temper/issues/505#issuecomment-6064956391), fix [#575](https://github.com/temperlang/temper/pull/575) | the cause of one "Test failed" line per run (comment) |
 | [54-generator-continue-loses-target](54-generator-continue-loses-target) | [#578](https://github.com/temperlang/temper/issues/578), fix [#580](https://github.com/temperlang/temper/pull/580) | a `continue` or `break` in a generator's loop loses its target on java, rust and cpp |
 | [55-generator-done-and-value-result](55-generator-done-and-value-result) | [#579](https://github.com/temperlang/temper/issues/579) | a generator's `done`, `is ValueResult`, and py's `nextSafe()` at the end break on most backends |
-| [56-py-run-hyphenated-library](56-py-run-hyphenated-library) | | `temper run -b py` on a library with a dash in its name: ModuleNotFoundError |
-| [57-library-name-with-digit](57-library-name-with-digit) | | py and rust import `f64str` as `f64_str` and `radix-36` as `radix36` |
-| [58-js-run-missing-library-crash](58-js-run-missing-library-crash) | | `temper run -b js` throws NoSuchElementException for a library that is not configured |
-| [59-cpp-library-named-like-c-function](59-cpp-library-named-like-c-function) | | cpp: a library named `nan`, `time` or `random` collides with the C function |
+| [56-py-run-hyphenated-library](56-py-run-hyphenated-library) | [#609](https://github.com/temperlang/temper/issues/609), fix [#614](https://github.com/temperlang/temper/pull/614) | `temper run -b py` on a library with a dash in its name: ModuleNotFoundError |
+| [57-library-name-with-digit](57-library-name-with-digit) | [#610](https://github.com/temperlang/temper/issues/610), fix [#616](https://github.com/temperlang/temper/pull/616) | py and rust import `f64str` as `f64_str` and `radix-36` as `radix36` |
+| [58-js-run-missing-library-crash](58-js-run-missing-library-crash) | [#611](https://github.com/temperlang/temper/issues/611), fix [#613](https://github.com/temperlang/temper/pull/613) | `temper run -b js` throws NoSuchElementException for a library that is not configured |
+| [59-cpp-library-named-like-c-function](59-cpp-library-named-like-c-function) | [#612](https://github.com/temperlang/temper/issues/612) | cpp: a library named `nan`, `time` or `random` collides with the C function |
 
 ## Running a case
 

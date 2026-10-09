@@ -84,7 +84,8 @@ rust: `PackageNaming.crateName` is `packageName.dashToSnake()`
 (`be-rust/src/commonMain/kotlin/lang/temper/be/rust/RustNames.kt:23-26`,
 `RustExt.kt:545`), and `main.rs` calls `${crateName}::init`
 (`RustBackend.kt:156`). Cargo names the crate for package `radix-36`
-`radix_36`. From reading, not run: a library that depends on one of these
-also refers to it by `crateName` (`RustBackend.kt:398-401`) while declaring
-the cargo dependency by `packageName` (`RustBackend.kt:170`), so it should
-fail the same way.
+`radix_36`. A library that imports from `radix-36` refers to it by
+`crateName` too (`RustExt.kt:569`, `RustBackend.kt:398-401`) while declaring
+the cargo dependency by `packageName` (`RustBackend.kt:170`), and fails the
+same way on rust, with `radix36::`. On py such a library runs, because
+imports between libraries use the package directory's name.
