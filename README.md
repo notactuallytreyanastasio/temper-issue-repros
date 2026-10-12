@@ -67,6 +67,11 @@ directory per bug. Cases 01 to 18 were checked against
 | [57-library-name-with-digit](57-library-name-with-digit) | [#610](https://github.com/temperlang/temper/issues/610), fix [#616](https://github.com/temperlang/temper/pull/616) | py and rust import `f64str` as `f64_str` and `radix-36` as `radix36` |
 | [58-js-run-missing-library-crash](58-js-run-missing-library-crash) | [#611](https://github.com/temperlang/temper/issues/611), fix [#613](https://github.com/temperlang/temper/pull/613) | `temper run -b js` throws NoSuchElementException for a library that is not configured |
 | [59-cpp-library-named-like-c-function](59-cpp-library-named-like-c-function) | [#612](https://github.com/temperlang/temper/issues/612) | cpp: a library named `nan`, `time` or `random` collides with the C function |
+| [60-trailing-value-after-loop](60-trailing-value-after-loop) | | a function's last expression is dropped after a loop holding a `return` and a `continue` or `break`; the interpreter returns the loop counter |
+| [61-generic-function-value](61-generic-function-value) | | `identity<Int>` passed as a value fails on every backend but the interpreter |
+| [62-getor-null-value](62-getor-null-value) | | js: `getOr` returns the fallback for a key present with a null value |
+| [63-js-bitvector-set-past-end](63-js-bitvector-set-past-end) | | js drops a `DenseBitVector` bit set at 128 or above; cpp aborts past the capacity |
+| [64-date-validation-per-backend](64-date-validation-per-backend) | | `new Date` and `Date.fromIsoString` accept different dates and strings per backend |
 
 ## Running a case
 
