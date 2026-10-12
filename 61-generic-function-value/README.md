@@ -57,9 +57,9 @@ runs the output anyway:
 | py | `before`, then `TypeError: 'NotImplementedType' object is not callable`; no build diagnostic |
 | rust | rustc rejects `let f<>___101: () = panic!("Unsupported: ...");` with `expected one of ... found '<'` |
 | cpp | g++: `use of undeclared identifier 'fltgt_0'` |
-| lua | emits `fltgt_0 = temper.bubble('builtin <> not supported by Lua Backend')`; not run, no `lua` on this machine (and the CLI then throws a NullPointerException, [#570](https://github.com/temperlang/temper/issues/570)) |
+| lua | emits `fltgt_0 = temper.bubble('builtin <> not supported by Lua Backend')`; ran after filing, see the end |
 | java | emits `f$3c$3e_100 = "(GarbageExpression\n  (Diagnostic \"builtin <> not supported by Java / JVM Backend\"))";`; not run, `temper run -b java` stops on the JDK version `21.0.12.1` ([#525](https://github.com/temperlang/temper/issues/525)) |
-| csharp | emits `f<>___100 = C::Core.Garbage("builtin <> not supported by C# Backend")`; not run, no `dotnet` on this machine |
+| csharp | emits `f<>___100 = C::Core.Garbage("builtin <> not supported by C# Backend")`; ran after filing, see the end |
 
 The type argument is not optional. Without it,
 [`plain-generic`](plain-generic/src/main.temper.md) is rejected:
@@ -121,3 +121,27 @@ backend (or TmpL, before them) to translate `<>(f, T)` used as a value as
 `f`, typed with the signature after substituting the type arguments.
 The type formals come from `f`'s declaration; the reference's own
 signature does not carry them.
+
+## lua and csharp, after filing
+
+lua (5.5.1) and csharp (.NET 10.0.401) are installed here now, so here they are, from the same CLI at `ffba652a`. Both fail, so the interpreter is still the only backend that runs `as-value`.
+
+lua prints nothing and dies while loading the module:
+
+```
+lua: builtin <> not supported by Lua Backend
+```
+
+csharp does not compile. The value becomes a field whose name contains `<>`:
+
+```csharp
+internal static object ? f<>___100;
+...
+console___10.Log(C::Core.ConvertToString(Apply(f<>___100((S1::Func<T__0, T__0>) Identity, typeof (int)), 5)));
+```
+
+```
+AsValueGlobal.cs(8,36): error CS1001: Identifier expected
+```
+
+`call-control` prints `5` on both. `plain-generic` prints `5` on lua after the frontend's error, as on the interpreter, js and py; on csharp it does not compile (`error CS0246: The type or namespace name 'T__0' could not be found`).

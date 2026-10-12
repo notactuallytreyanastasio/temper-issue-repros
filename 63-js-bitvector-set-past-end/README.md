@@ -80,9 +80,7 @@ libc++abi: terminating due to uncaught exception of type temper::core::TemperBub
 ./repro.sh 63-js-bitvector-set-past-end/get-past-end cpp
 ```
 
-lua and csharp were not run: there is no `lua` here, and the CLI throws
-the NullPointerException from
-[#570](https://github.com/temperlang/temper/issues/570), and no `dotnet`.
+lua and csharp ran after the issue was filed; see the end.
 java was not run because `temper run -b java` on `ffba652a` rejects the
 JDK version `21.0.12.1`
 ([#525](https://github.com/temperlang/temper/issues/525)).
@@ -141,3 +139,7 @@ cpp. `be-cpp/src/commonMain/resources/lang/temper/be/cpp/core/dense_bit_vector.h
 makes a `std::vector<bool>` of exactly `capacity` elements, and `get` and
 `set` both call `bubble` for an index outside it. This is from reading;
 the outputs above are from running it.
+
+## lua and csharp, after filing
+
+lua (5.5.1) and csharp (.NET 10.0.401) are installed here now, so here they are, from the same CLI at `ffba652a`. Both keep every bit in `set-past-end`, `get is true` on all nine lines, and print the same three lines as js, py, rust and the interpreter for `get-past-end`. So js and cpp are the only backends that get this wrong.

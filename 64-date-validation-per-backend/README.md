@@ -96,9 +96,7 @@ Run on node 24.19.0 and Python 3.14.6. java ran under JDK 27, whose
 version string is one part, because `temper run -b java` cannot parse
 the JDK 21 here (`21.0.12.1`,
 [#525](https://github.com/temperlang/temper/issues/525)). lua and
-csharp did not run: there is no `lua` or `dotnet` on this machine, and
-lua then stops with the NullPointerException from
-[#570](https://github.com/temperlang/temper/issues/570).
+csharp ran after the issue was filed; see the end.
 
 ## Expected
 
@@ -168,3 +166,42 @@ From reading, at `ffba652a`:
   Monday; it is Wednesday. [#608](https://github.com/temperlang/temper/pull/608)
   changes how `dayOfWeek` is computed in the Temper body and does not
   touch any of the above.
+
+## lua and csharp, after filing
+
+lua (5.5.1) and csharp (.NET 10.0.401) are installed here now, so here they are, from the same CLI at `ffba652a`. `-` means it bubbled.
+
+| call | lua | csharp |
+|---|---|---|
+| new Date(1600, 2, 29) | - | 1600-02-29 w2 |
+| new Date(2023, 4, 30) | 2023-04-30 w7 | 2023-04-30 **w0** |
+| new Date(1900, 2, 29), (2023, 4, 31), (2023, 0, 1), (2023, 6, -1) | - | - |
+| new Date(12345, 1, 2) | 12345-01-02 w2 | - |
+| "1596-03-31", "0012-11-10" | accepted | accepted |
+| every other string in the case | - | - |
+
+csharp gives 0 for Sunday, as cpp does; the docs say 7.
+
+lua's `-` for 1600-02-29 is not the constructor, which accepts it. It is `dayOfWeek`, which calls `os.time`, and `os.time` on this Lua refuses any year before 1900:
+
+```
+$ lua -e 'print(pcall(os.time, {year=1600, month=2, day=28}))'
+false	time result cannot be represented in this installation
+$ lua -e 'print(pcall(os.time, {year=1900, month=2, day=28}))'
+true	-2203916400
+```
+
+The case shows it as a bubble only because the constructor and `dayOfWeek` share one `do` block. `dayOfWeek` is not declared to bubble, so the frontend drops an `orelse` around it on its own, and the program dies:
+
+```temper
+let d = new Date(1600, 2, 29);
+console.log("built ${d.toString()}");
+console.log("weekday ${do { d.dayOfWeek.toString() } orelse "bubble"}");
+```
+
+```
+built 1600-02-29
+lua: temper-core/init.lua:1786: time result cannot be represented in this installation
+```
+
+The interpreter prints `weekday 2` there. (It also prints `7` for 1900-01-01, which was a Monday; that is the century-year bug PR #608 fixes. lua does not have that bug, because it calls its own `temper.date_dayofweek` rather than std's Temper, which the description of #608 gets wrong.) lua's `fromIsoString` is the strictest here along with csharp: it rejects `" 1596-03-31"`, `"+1596-03-31"` and `"12345-01-02"`, which the interpreter and rust accept.

@@ -46,9 +46,7 @@ and a program cannot tell "absent" from "present and null" through
 java's line is from `run-java.sh`, which builds with the CLI and runs
 `javac`/`java` directly, because `temper run -b java` stops on the JDK
 version `21.0.12.1` ([#525](https://github.com/temperlang/temper/issues/525)).
-lua did not run here (no `lua` on PATH, which the CLI reports as a
-NullPointerException, [#570](https://github.com/temperlang/temper/issues/570)),
-nor csharp (no `dotnet`).
+lua and csharp ran after the issue was filed; see the end.
 
 ## Expected
 
@@ -76,3 +74,7 @@ backends look the key up rather than test the value:
 - java: `Map.getOrDefault` (`be-java/src/commonMain/kotlin/lang/temper/be/java/JavaSupportNetwork.kt:1320-1322`)
 - rust: `self.0.get(&key).cloned().unwrap_or(fallback)` (`be-rust/src/commonMain/resources/lang/temper/be/rust/temper-core/src/mapped.rs:107-109`)
 - cpp: `m->data.find(key)` (`be-cpp/src/commonMain/resources/lang/temper/be/cpp/core/mapped.hpp:37-42`)
+
+## lua and csharp, after filing
+
+lua (5.5.1) and csharp (.NET 10.0.401) are installed here now, so here they are, from the same CLI at `ffba652a`. Both print `null` for `getOr` on the key that holds null, on the builder and on the map. They agree with the interpreter, py, rust, java and cpp, and js is the only backend that answers the fallback.

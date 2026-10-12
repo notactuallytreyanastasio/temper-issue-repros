@@ -93,8 +93,8 @@ with only a `return` and a loop with only a `continue`, each followed by
 
 java cannot run under `temper run` here because of
 [#525](https://github.com/temperlang/temper/issues/525); its row is
-`javac` on the sources `temper build -b java` writes. lua and csharp were
-not run: neither `lua` nor `dotnet` is installed on this machine.
+`javac` on the sources `temper build -b java` writes. lua and csharp ran
+after the issue was filed; see the end.
 
 ## Expected
 
@@ -146,3 +146,22 @@ symptom, a `return__N` nothing assigns, with a different cause: a `Void`
 body that ends in `panic()`. PR
 [#572](https://github.com/temperlang/temper/pull/572) fixes that one in
 `be/.../tmpl/TmpLTranslator.kt` and does not touch this pass.
+
+## lua and csharp, after filing
+
+lua (5.5.1) and csharp (.NET 10.0.401) are installed here now, so here they are, from the same CLI at `ffba652a`. Neither gets `-7`.
+
+lua: `afterContinue` returns `return__0`, which nothing assigned, so it is `nil`, and the program dies converting it to a string:
+
+```
+temper-core/init.lua:1177: bad argument #2 to 'string_format' (number expected, got nil)
+```
+
+csharp does not compile, for the same reasons as rust and javac:
+
+```
+LostGlobal.cs(27,20): error CS0165: Use of unassigned local variable 'return__0'
+LostGlobal.cs(29,29): error CS0161: 'LostGlobal.AfterBreak(IReadOnlyList<string>)': not all code paths return a value
+```
+
+`controls` prints `-7` twice on both.
